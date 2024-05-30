@@ -53,10 +53,10 @@ export type HotelWithRooms = Hotel & {
 
 const formSchema = z.object({
     title: z.string().min(3, {
-        message: 'Title must be atleast 3 characters long'
+        message: 'Title must be at least 3 characters long'
     }),
     description: z.string().min(10, {
-        message: 'Description must be atleast 10 characters long'
+        message: 'Description must be at least 10 characters long'
     }),
     image: z.string().min(1, {
         message: 'Image is required'

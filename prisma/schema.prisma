@@ -4,7 +4,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
@@ -14,12 +13,15 @@ model Hotel {
   id                  String    @id @default(uuid())
   userId              String
   title               String    @db.Text
-  description         String    
+  description         String
   image               String
   country             String
   state               String
   city                String
-  locationDescription String    
+  locationDescription String
+  approved            Boolean   @default(false)
+  featured            Boolean   @default(false)
+  iNew                Boolean   @default(false)
   gym                 Boolean   @default(false)
   spa                 Boolean   @default(false)
   bar                 Boolean   @default(false)
@@ -41,7 +43,7 @@ model Hotel {
 model Room {
   id             String  @id @default(uuid())
   title          String
-  description    String  
+  description    String
   bedCount       Int     @default(0)
   guestCount     Int     @default(0)
   bathroomCount  Int     @default(0)

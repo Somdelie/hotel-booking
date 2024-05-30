@@ -36,7 +36,7 @@ const SearchInput = () => {
         setValue(e.target.value)
     }
 
-    if (pathname !== '/') return null
+    if (pathname !== '/hotels') return null
 
     return (<div className="relative sm:block hidden">
         <Search className="absolute h-4 w-4 top-3 left-4 text-muted-foreground" />

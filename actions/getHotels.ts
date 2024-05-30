@@ -13,6 +13,7 @@ export const getHotels = async (searchParams: {
       where: {
         title: {
           contains: title,
+          mode: 'insensitive' 
         },
         country,
         state,

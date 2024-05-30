@@ -8,12 +8,13 @@ import { Button } from "../ui/button";
 import SearchInput from "../SearchInput";
 import { ModeToggle } from "../theme-toggle";
 import { NavMenu } from "./NavMenu";
+import Link from "next/link";
 
 const NavBar = () => {
     const router = useRouter()
     const { userId } = useAuth()
 
-    return (<div className="sticky top-0 border border-b-primary/10 bg-secondary">
+    return (<div className="sticky z-50 top-0 border border-b-primary/10 bg-secondary">
         <Container>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-1 cursor-pointer" onClick={() => router.push('/')}>
@@ -21,6 +22,7 @@ const NavBar = () => {
                     <div className="font-bold text-xl">StaySavvy</div>
                 </div>
                 <SearchInput />
+                <Link href='/hotels'>Browse Hotels</Link>
                 <div className="flex gap-3 items-center">
                     <div>
                         <ModeToggle />
