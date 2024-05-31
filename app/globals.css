@@ -497,96 +497,122 @@
 }
 
 
-.speaker {
-  position: absolute;
-  top: 2px;
-  right: 50%;
-  transform: translate(50%, 0%);
-  width: 40%;
-  height: 2px;
-  border-radius: 2px;
-  background-color: rgb(43, 43, 43);
+.form button {
+  border: none;
+  background: none;
+  color: #8b8ba7;
 }
-
-.camera {
-  position: absolute;
-  top: 6px;
-  right: 84%;
-  transform: translate(50%, 0%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.135);
-}
-
-.int {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  background-color: rgba(0, 0, 255, 0.212);
-}
-
-.btn1, .btn2, .btn3, .btn4 {
-  position: absolute;
-  width: 2px;
-}
-
-.btn1, .btn2, .btn3 {
-  height: 45px;
-  top: 30%;
-  right: -4px;
-  background-image: linear-gradient(to right, #111111, #222222, #333333, #464646, #595959);
-}
-
-.btn2, .btn3 {
-  transform: scale(-1);
-  left: -4px;
-}
-
-.btn2, .btn3 {
-  transform: scale(-1);
-  height: 30px;
-}
-
-.btn2 {
-  top: 26%
-}
-
-.btn3 {
-  top: 36%
-}
-
-.hello {
+/* styling of whole input container */
+.form {
+  --timing: 0.3s;
+  --width-of-input: 300px;
+  --height-of-input: 40px;
+  --border-height: 2px;
+  --input-bg: #fff;
+  --border-radius: 30px;
+  --after-border-radius: 1px;
+  position: relative;
+  width: var(--width-of-input);
+  height: var(--height-of-input);
   display: flex;
-  flex-flow: column;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 35px;
+  padding-inline: 0.8em;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
+  /* background: var(--input-bg,#fff); */
+  @apply border-sky-500 bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-300
+}
+/* styling of Input */
+.input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
   height: 100%;
-  overflow: hidden;
-  transition: 0.5s ease-in-out;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+/* styling of animated border */
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+  border-radius: var(--after-border-radius);
 }
 
-.hidden {
-  display: block;
+.form input:focus {
+  outline: none;
+}
+/* here is code of animated border */
+.form:focus-within:before {
+  transform: scale(1);
+}
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+  border: none;
+  background: none;
   opacity: 0;
-  transition: all 0.3s ease-in;
+  visibility: hidden;
 }
-
-.card:hover .hidden {
+/* close button shown when typing */
+.form input:not(:placeholder-shown) ~ .reset {
   opacity: 1;
+  visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+  width: 17px;
+  margin-top: 3px;
 }
 
-.card:hover .hello {
-  transform: translateY(-20px);
+.rainbow-hover {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff7576;
+  background-color: #2B3044;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 24px;
+  position: relative;
+  line-height: 24px;
+  border-radius: 9px;
+  transform-style: preserve-3d;
+  transform: scale(var(--s, 1)) perspective(600px)
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  perspective: 600px;
+  transition: transform 0.1s;
 }
 
+.sp {
+  background: linear-gradient(
+      90deg,
+      #866ee7,
+      #ea60da,
+      #ed8f57,
+      #fbd41d,
+      #2cca91
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  display: block;
+}
 
+.rainbow-hover:active {
+  transition: 0.3s;
+  transform: scale(0.93);
+}

@@ -8,23 +8,26 @@ import { Button } from "../ui/button";
 import SearchInput from "../SearchInput";
 import { ModeToggle } from "../theme-toggle";
 import { NavMenu } from "./NavMenu";
-import Link from "next/link";
+import SearchHotel from "../ui/SearchHotel";
 
 const NavBar = () => {
     const router = useRouter()
     const { userId } = useAuth()
 
-    return (<div className="sticky z-50 top-0 border border-b-primary/10 bg-secondary">
+    return (<div className="sticky top-0 z-50 border border-b-primary/10 bg-secondary">
         <Container>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-1 cursor-pointer" onClick={() => router.push('/')}>
                     <Image src='/logo.svg' alt="logo" width='30' height="30" />
-                    <div className="font-bold text-xl">StaySavvy</div>
+                    <div className="font-bold sm:text-xl">StaySavvy</div>
                 </div>
-                <SearchInput />
-                <Link href='/hotels'>Browse Hotels</Link>
+                <div className="hidden sm:block">
+
+                <SearchHotel/>
+                </div>
+                
                 <div className="flex gap-3 items-center">
-                    <div>
+                    <div className="flex">
                         <ModeToggle />
                         <NavMenu />
                     </div>

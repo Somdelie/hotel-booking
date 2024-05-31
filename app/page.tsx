@@ -16,17 +16,10 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const featuredHotel = await getFeaturedHotels()
-  const newHotels = await getNewHotels()
   const hotels = await getHotels(searchParams)
 
   return (
     <div>
-     <FeaturedHotel featuredHotel={featuredHotel}/>
-      <NewHotels newHotels={newHotels} />
-      <h2 className="font-semibold underline text-xl text-center">
-        Our Hotels
-      </h2>
       <AllHotels hotels={hotels} />
     </div>
   )

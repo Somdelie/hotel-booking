@@ -78,7 +78,7 @@ const LocationFilter = () => {
         }
 
         const url = qs.stringifyUrl({
-            url: '/hotels',
+            url: '/',
             query: currentQuery
         }, { skipNull: true, skipEmptyString: true })
 
@@ -86,13 +86,13 @@ const LocationFilter = () => {
     }, [country, state, city])
 
     const handleClear = () => {
-        router.push('/hotels')
+        router.push('/')
         setCountry('')
         setState('')
         setCity('')
     }
 
-    if (pathname !== '/hotels') return null
+    if (pathname !== '/') return null
 
     return (<Container>
         <div className="flex gap-2 md:gap-4 items-center justify-center text-sm">
