@@ -95,7 +95,7 @@ const LocationFilter = () => {
     if (pathname !== '/') return null
 
     return (<Container>
-        <div className="flex gap-2 md:gap-4 items-center justify-center text-sm">
+        <div className="flex gap-1 md:gap-4 items-center justify-center text-sm">
             <div>
                 <Select
                     onValueChange={(value) => setCountry(value)}
