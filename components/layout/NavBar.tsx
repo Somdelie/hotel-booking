@@ -8,6 +8,14 @@ import { Button } from "../ui/button";
 import { ModeToggle } from "../theme-toggle";
 import { NavMenu } from "./NavMenu";
 import SearchHotel from "../ui/SearchHotel";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Search } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 const NavBar = () => {
   const router = useRouter();
@@ -28,8 +36,24 @@ const NavBar = () => {
             <SearchHotel />
           </div>
 
+          <div className="hidden">
+            <SearchHotel />
+          </div>
+
           <div className="flex gap-2 sm:gap-3 items-center">
             <div className="flex">
+              <div className="sm:hidden">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Search />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <SearchHotel />
+                  </DialogContent>
+                </Dialog>
+              </div>
               <ModeToggle />
               {userId ? (
                 <div className="ml-2">
