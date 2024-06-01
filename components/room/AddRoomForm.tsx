@@ -27,10 +27,10 @@ interface AddRoomFormProps {
 
 const formSchema = z.object({
     title: z.string().min(3, {
-        message: 'Title must be atleast 3 characters long.'
+        message: 'Title must be at least 3 characters long.'
     }),
     description: z.string().min(10, {
-        message: 'Description must be atleast 10 characters long.'
+        message: 'Description must be at least 10 characters long.'
     }),
     bedCount: z.coerce.number().min(1, { message: 'Bed count is required' }),
     guestCount: z.coerce.number().min(1, { message: 'Guest count is required' }),
@@ -199,7 +199,7 @@ const AddRoomForm = ({ hotel, room, handleDialogueOpen }: AddRoomFormProps) => {
                     )}
                 />
                 <div>
-                    <FormLabel>Choose Rooom Amenities</FormLabel>
+                    <FormLabel>Choose Room Amenities</FormLabel>
                     <FormDescription>What makes this room a good choice?</FormDescription>
                     <div className='grid grid-cols-2 gap-2 mt-2'>
                         <FormField

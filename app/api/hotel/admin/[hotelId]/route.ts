@@ -1,5 +1,7 @@
 import prismadb from "@/lib/prismadb";
-import { auth } from "@clerk/nextjs";
+import { isAdmin } from "@/lib/utils";
+import { auth, currentUser } from "@clerk/nextjs";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
@@ -8,15 +10,15 @@ export async function PATCH(
 ) {
   try {
     const body = await req.json();
-    const { userId } = auth();
+    const user = await currentUser();
 
     if (!params.hotelId) {
       return new NextResponse("Hotel Id is required", { status: 400 });
     }
 
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
+    if(!user || !isAdmin(user)){
+      throw new Error('Unknown Action')
+  }
 
     const hotel = await prismadb.hotel.update({
       where: {
@@ -37,22 +39,22 @@ export async function DELETE(
   { params }: { params: { hotelId: string } }
 ) {
   try {
-    const { userId } = auth();
+    const user = await currentUser();
 
     if (!params.hotelId) {
       return new NextResponse("Hotel Id is required", { status: 400 });
     }
 
-    if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
+    if(!user || !isAdmin(user)){
+      throw new Error('Unknown Action')
+  }
 
     const hotel = await prismadb.hotel.delete({
       where: {
         id: params.hotelId,
       },
     });
-
+    revalidatePath("/admin")
     return NextResponse.json(hotel);
   } catch (error) {
     console.log("Error at /api/hotel/hotelId DELETE", error);

@@ -34,7 +34,7 @@ const SearchHotel = () => {
         setValue(e.target.value)
     }
 
-    if (pathname !== '/') return null
+    if (pathname !== '/' && pathname !== '/admin') return null
   return (
     <div className="form">
     <button>

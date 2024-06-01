@@ -1,10 +1,6 @@
-import { getFeaturedHotels } from "@/actions/getFeaturedHotels";
 import { getHotels } from "@/actions/getHotels";
-import { getNewHotels } from "@/actions/getNewHotels";
 import AllHotels from "@/components/hotel/AllHotels";
-import FeaturedHotel from "@/components/hotel/FeaturedHotel";
-import HotelList from "@/components/hotel/HotelList";
-import NewHotels from "@/components/hotel/NewHotels";
+import Link from "next/link";
 
 interface HomeProps {
   searchParams: {
@@ -20,6 +16,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div>
+      <Link href='/admin'>Dashboard</Link>
       <AllHotels hotels={hotels} />
     </div>
   )

@@ -16,7 +16,7 @@ const HotelDetailsClient = ({ hotel, bookings }: { hotel: HotelWithRooms, bookin
     const state = getStateByCode(hotel.country, hotel.state)
 
     return (<div className="flex flex-col gap-6 pb-2">
-        <div className="apespect-square overflow-hidden relative w-fullh-[200px] md:h-[400px] rounded-lg">
+        <div className="apespect-square overflow-hidden relative w-full h-[200px] md:h-[400px] rounded-lg">
             <Image
                 fill
                 src={hotel.image}

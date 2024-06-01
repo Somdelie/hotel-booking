@@ -68,18 +68,22 @@ const AllHotels = ({ hotels }: { hotels: HotelWithRooms[] }) => {
         ))}
       </div>
       {/* pagination goes here */}
-      {hotels.length > 10 && <div className="flex w-full mt-6 items-center justify-center gap-6">
-        <Button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Prev
-        </Button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <Button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </Button>
-      </div>}
-      
+      {hotels.length > 10 && (
+        <div className="flex w-full mt-6 items-center justify-center gap-6">
+          <Button onClick={handlePrevPage} disabled={currentPage === 1}>
+            Prev
+          </Button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <Button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
